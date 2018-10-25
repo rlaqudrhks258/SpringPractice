@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--applicationContext는 스프링 설정을 위한 단계 -->
+<!-- 	<bean id="tv" class="polymorphism.SamsungTV"></bean>
+	<bean id="tv2" class="polymorphism.LgTV"></bean> -->
+
+
+	<!--단순히 bean등록 외에도 여러 복잡하고 다양한 설정이 팔요하기에 기능별로 xml파일을 나누어 설정하는것이 더욱 효율적 , 
+		이렇게 분리된 xml을 한곳으로 모아주는것이 import -->
+	<!-- <beans>
+		<import resource="context-datasource.xml" />
+		<import resource="context-transource.xml" />
+	</beans> -->
+	<!-- id는 자바 식별자 작성 규칠을 따른다. name은 안해도 무방 -->
+	
+	<!-- 객체를 생성한뒤 멤버변수 초기회 작업이 필요하다면 init-method사용! -->
+	<bean id = "tv" class = "polymorphism.SamsungTV" init-method="initMethod"/>
+
+</beans>
