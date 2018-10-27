@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!--applicationContext는 스프링 설정을 위한 단계 -->
 <!-- 	<bean id="tv" class="polymorphism.SamsungTV"></bean>
@@ -15,7 +17,7 @@
 	</beans> -->
 	<!-- id는 자바 식별자 작성 규칠을 따른다. name은 안해도 무방 -->
 	
-	<!-- 객체를 생성한뒤 멤버변수 초기회 작업이 필요하다면 init-method사용! -->
+	<!-- 객체를 생성한뒤 멤버변수 초기화 작업이 필요하다면 init-method사용! -->
 	<!-- <bean id = "tv" class = "polymorphism.SamsungTV" init-method="initMethod"/> -->
 	<!-- 객체 삭제전에 호출될 임의의 메소드 지정 가능! -->
 <!-- 	<bean id = "tv2" class = "polymorphism.SamsungTV" destroy-method = "destroyMethod"/> -->
@@ -26,9 +28,13 @@
 	<!-- 해당 bean이 요청할 될 떄마다 매번 새로운 객체를 생성하여 반환한다. -->
 	<!-- bean id = "tv4" class="polymorphism.SamsungTV" scope = "prototype"/> -->
 	<!-- 생성자 인젝션을 위해선 <constructor-arg>엘리먼트 추가 , 그리고 생성자 인자로 전달받을 아이디를 ref속성으로 참조!-->
-	<bean id ="tv" class= "polymorphism.SamsungTV">
-	<constructor-arg ref="sony"></constructor-arg>
-	</bean>
+	<!-- Setter인젝션을 이용하려면 property엘리먼트 사용,호출하고 자하는 메소드이름을 name 속성값에 줘야한다
+	name 속성값이 speaker이라면 호출되는 메소드는 setSpeaker이다. 변수이름에서 첫글자를 대문자로 바꾸고 앞에 set을 붙인것이 호출할 메소드 이름이다. -->
+
+	<!-- bean으로 등록된 다른 객체일 때는 ref속성으로 해당 객체의 아이디나 이름을참조
+	그러나 고정된 문자열이나 정수같은 데이터일땐 value속성을 사용해준다. -->
+	<bean id ="tv" class= "polymorphism.SamsungTV"  p:speaker-ref = "sony" p:price = "2700000"/>
+	<bean id = "apple" class="polymorphism.AppleSpeaker"></bean>
 	<bean id = "sony" class="polymorphism.SonySpeaker"></bean>
 
 </beans>
