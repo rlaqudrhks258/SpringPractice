@@ -16,6 +16,19 @@
 	<!-- id는 자바 식별자 작성 규칠을 따른다. name은 안해도 무방 -->
 	
 	<!-- 객체를 생성한뒤 멤버변수 초기회 작업이 필요하다면 init-method사용! -->
-	<bean id = "tv" class = "polymorphism.SamsungTV" init-method="initMethod"/>
+	<!-- <bean id = "tv" class = "polymorphism.SamsungTV" init-method="initMethod"/> -->
+	<!-- 객체 삭제전에 호출될 임의의 메소드 지정 가능! -->
+<!-- 	<bean id = "tv2" class = "polymorphism.SamsungTV" destroy-method = "destroyMethod"/> -->
+	<!-- 자주 사용되지 않으면서 메모리를 많이 차지하여 시스템에 부담을 주는 경우 lazy init메소드 사용하자! -->
+	<!-- <bean id = "tv3" class = "polymorphism.SamsungTV" lazy-init = "true"/> -->
+	<!-- 생성한 bean을 어느 범위에서 사용할 수 있는지 지정가능하고 해당 bean이 스프링 컨테이너에 의해 단 하나만 생성된다. -->
+	<!-- <bean id = "tv4" class="polymorphism.SamsungTV" scope = "singleton"/> -->
+	<!-- 해당 bean이 요청할 될 떄마다 매번 새로운 객체를 생성하여 반환한다. -->
+	<!-- bean id = "tv4" class="polymorphism.SamsungTV" scope = "prototype"/> -->
+	<!-- 생성자 인젝션을 위해선 <constructor-arg>엘리먼트 추가 , 그리고 생성자 인자로 전달받을 아이디를 ref속성으로 참조!-->
+	<bean id ="tv" class= "polymorphism.SamsungTV">
+	<constructor-arg ref="sony"></constructor-arg>
+	</bean>
+	<bean id = "sony" class="polymorphism.SonySpeaker"></bean>
 
 </beans>
