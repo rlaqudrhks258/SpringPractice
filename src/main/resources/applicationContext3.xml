@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- xml프레임 워크는 xml설정이 정말 중요하며 그만큼 비중이크다. 그래서 어노테이션을 이용한 설정을 지원한다. -->
+	<!-- 어노테이션 설정을 추가하기위해선 context네임 스페이스 추가해야한다. -->
+	<!--스프링 설정 파일에 애플리케이션에서 사용할 객체들을 빈읋 등록하지 않고 생성하려면 context:component-scan이라는 
+		엘리먼트 정의해야함 -->
+<context:component-scan base-package="polymorphism"></context:component-scan>
+
+<bean class = "polymorphism.LgTV"></bean>
+
+
+</beans>
